@@ -53,25 +53,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Static Netlify Forms detection helper */}
-      <form
-        name="contact"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        hidden
-        aria-hidden="true"
-      >
-        <input type="hidden" name="form-name" value="contact" />
-        <input name="bot-field" />
-        <input name="name" />
-        <input name="email" />
-        <input name="organization" />
-        <input name="phone" />
-        <input name="purpose" />
-        <textarea name="message" />
-        <input name="consent" type="checkbox" />
-      </form>
     </>
   );
 }

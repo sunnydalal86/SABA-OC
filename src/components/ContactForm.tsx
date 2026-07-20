@@ -32,8 +32,8 @@ export function ContactForm() {
         body.append(key, String(value));
       });
 
-      // Netlify Forms: POST to site root with form-name for detection/processing
-      const res = await fetch("/", {
+      // Netlify Forms (Next.js runtime v5): POST to static HTML for form handling
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
@@ -70,8 +70,6 @@ export function ContactForm() {
     <form
       name="contact"
       method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="rounded-sm border border-border bg-white p-6 sm:p-8"
     >
