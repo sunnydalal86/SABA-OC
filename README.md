@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SABA-OC Website
 
-## Getting Started
+Production-ready Next.js website for the **South Asian Bar Association of Orange County (SABA-OC)**.
 
-First, run the development server:
+Membership registration and payments remain on Wild Apricot. This site is the marketing, events, and information layer.
+
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Framer Motion (restrained)
+- Lucide icons
+- Netlify deployment via `@netlify/plugin-nextjs`
+
+## Getting started
 
 ```bash
+cd SABA-OC
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run lint    # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment
 
-## Learn More
+Optional:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_SITE_URL=https://www.sabaoc.org
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Defaults to `https://www.sabaoc.org` for canonical URLs, Open Graph, sitemap, and robots.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy on Netlify
 
-## Deploy on Vercel
+1. Connect this repository to Netlify.
+2. Build settings are in `netlify.toml` (`npm run build` + Next.js runtime plugin).
+3. Enable form detection so the Contact form (`name="contact"`) is registered.
+4. Set `NEXT_PUBLIC_SITE_URL` to the production domain if different from sabaoc.org.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Updating content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Nontechnical editors: see **[CONTENT.md](./CONTENT.md)**.
+
+Frequently changed data lives in:
+
+| File | Purpose |
+|------|---------|
+| `src/data/site.ts` | Org name, mission, membership URL, announcement bar, socials |
+| `src/data/events.ts` | Events, RSVP links, featured flag |
+| `src/data/leadership.ts` | Officers, board, steering committee |
+| `src/data/gallery.ts` | Gallery albums and images |
+| `src/data/sponsors.ts` | Tiers, current sponsors, sponsorship contact |
+| `src/data/navigation.ts` | Primary / footer navigation |
+
+Images live in `public/images/`.
+
+## Project structure
+
+```
+src/
+  app/           # Pages (App Router)
+  components/    # Shared UI
+  data/          # Editable content
+  lib/           # SEO + helpers
+public/images/   # Placeholder and client assets
+```
+
+## Notes for launch
+
+- Replace placeholder photography and leadership headshots.
+- Confirm Wild Apricot membership URL in `src/data/site.ts`.
+- Add RSVP URLs for events when available.
+- Replace Privacy placeholder with counsel-approved language.
+- Add official logo / favicon when provided.
+- Do not invent bios, stats, or sponsor pricing.
+
+## License
+
+Private project for SABA-OC. All rights reserved.
