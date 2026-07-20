@@ -5,13 +5,13 @@ import type { LeadershipMember } from "@/data/leadership";
 export function LeadershipCard({ member }: { member: LeadershipMember }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-sm border border-border bg-white">
-      <div className="relative aspect-[4/5] bg-navy-muted">
+      <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden bg-navy-muted">
         <Image
           src={member.image}
           alt={`Portrait of ${member.name}`}
           fill
-          className="object-cover object-top"
-          sizes="(max-width: 768px) 100vw, 25vw"
+          className="object-cover object-[center_20%]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
       </div>
       <div className="flex flex-1 flex-col p-5">

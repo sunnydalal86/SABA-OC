@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Source_Sans_3 } from "next/font/google";
+import { DesignPreviewBar } from "@/components/DesignPreviewBar";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en" className={`${serif.variable} ${sans.variable} h-full`}>
       <body className="min-h-full flex flex-col font-sans antialiased">
         <OrganizationJsonLd />
+        <DesignPreviewBar />
         <AnnouncementBar />
         <Header />
         <main className="flex-1">{children}</main>

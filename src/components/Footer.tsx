@@ -98,6 +98,18 @@ export function Footer() {
         </div>
       </div>
 
+      <div className="border-t border-white/10 bg-gold px-4 py-3 text-center text-sm font-semibold text-navy-deep sm:px-6 lg:px-8">
+        Design Preview — Prepared by{" "}
+        <a
+          href="https://dizzledigital.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-2 underline-offset-4 hover:text-navy"
+        >
+          Dizzle Digital
+        </a>
+      </div>
+
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 text-xs text-ivory/55 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>
