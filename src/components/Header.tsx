@@ -36,15 +36,15 @@ export function Header() {
           : "border-transparent bg-white",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5 lg:px-4 xl:gap-4 xl:px-8">
-        <Link href="/" className="shrink-0">
+      <div className="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-2.5 sm:px-5 lg:px-4 xl:gap-4 xl:px-8">
+        <Link href="/" className="min-w-0 shrink">
           <Image
             src="/images/brand/logo.png"
             alt="SABA-OC, South Asian Bar Association of Orange County"
             width={1009}
             height={353}
             priority
-            className="h-[4.5rem] w-auto sm:h-20 lg:h-[5.5rem] xl:h-28"
+            className="h-14 w-auto max-w-full sm:h-20 lg:h-[5.5rem] xl:h-28"
           />
         </Link>
 
@@ -60,20 +60,17 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
-          <ButtonLink
-            href={siteConfig.membershipUrl}
-            external
-            size="sm"
-            className="hidden sm:inline-flex"
-          >
-            Become a Member
-            <ExternalLink className="size-3.5 opacity-70" aria-hidden />
-          </ButtonLink>
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+          <div className="hidden sm:block">
+            <ButtonLink href={siteConfig.membershipUrl} external size="sm">
+              Become a Member
+              <ExternalLink className="size-3.5 opacity-70" aria-hidden />
+            </ButtonLink>
+          </div>
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-sm border border-border p-2 text-navy lg:hidden"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-sm border border-border text-navy lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
