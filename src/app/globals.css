@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #0c2340;
-  --navy-deep: #081829;
-  --navy-muted: #1a3a5c;
-  --ivory: #f7f4ef;
-  --ivory-deep: #efeae2;
-  --gold: #b8954a;
-  --gold-soft: #d4b978;
-  --charcoal: #2a2a2a;
-  --muted: #5c5c5c;
-  --border: #ddd6cb;
+  --navy: #082850;
+  --navy-deep: #061c38;
+  --navy-muted: #1c4068;
+  --ivory: #ffffff;
+  --ivory-deep: #f4f6f8;
+  --gold: #c08848;
+  --gold-soft: #e2b57a;
+  --gold-ink: #996c39;
+  --charcoal: #1a2332;
+  --muted: #5c6770;
+  --border: #e3e7ec;
   --white: #ffffff;
-  --focus: #b8954a;
-  --background: var(--ivory);
+  --focus: #c08848;
+  --background: #ffffff;
   --foreground: var(--charcoal);
 }
 
@@ -25,6 +26,7 @@
   --color-ivory-deep: var(--ivory-deep);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
+  --color-gold-ink: var(--gold-ink);
   --color-charcoal: var(--charcoal);
   --color-muted: var(--muted);
   --color-border: var(--border);

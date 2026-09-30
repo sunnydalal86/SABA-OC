@@ -16,7 +16,7 @@ export default function ContactPage() {
     <>
       <InteriorHero
         title="Contact Us"
-        description="Interested in collaborating, joining, sponsoring, or volunteering? Share a few details and we will be in touch."
+        description="If you are interested in collaborating, share your information and we will be in touch."
         breadcrumbs={[{ label: "Contact" }]}
       />
 

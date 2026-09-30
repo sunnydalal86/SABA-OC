@@ -18,7 +18,7 @@ export function FeaturedEvent({ event }: { event: SabaEvent }) {
         <SectionHeading
           eyebrow="Featured Event"
           title="Join us for our next gathering"
-          description="Connect with colleagues, support public service, and help strengthen Orange County’s South Asian legal community."
+          description={event.summary}
         />
 
         <div className="mt-10 grid overflow-hidden rounded-sm border border-border lg:grid-cols-2">
@@ -33,8 +33,8 @@ export function FeaturedEvent({ event }: { event: SabaEvent }) {
           </div>
 
           <div className="bg-ivory p-6 sm:p-8 lg:p-10" id={event.id}>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-              {event.eventType} · Upcoming
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-ink">
+              {event.eventType} · {event.status === "upcoming" ? "Upcoming" : "Past"}
             </p>
             <h3 className="mt-3 font-serif text-3xl text-navy">{event.title}</h3>
 
@@ -47,7 +47,7 @@ export function FeaturedEvent({ event }: { event: SabaEvent }) {
               <div className="flex gap-3">
                 <dt className="sr-only">Time</dt>
                 <Clock className="mt-0.5 size-4 text-navy/50" aria-hidden />
-                <dd>{formatTimeRange(event.startTime, event.endTime)}</dd>
+                <dd>{event.timeLabel ?? formatTimeRange(event.startTime, event.endTime)}</dd>
               </div>
               <div className="flex gap-3">
                 <dt className="sr-only">Location</dt>
@@ -57,6 +57,25 @@ export function FeaturedEvent({ event }: { event: SabaEvent }) {
             </dl>
 
             <p className="mt-6 text-base leading-relaxed text-muted">{event.fullDescription}</p>
+
+            {event.tickets?.length ? (
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-ink">
+                  Tickets
+                </p>
+                <ul className="mt-3 grid grid-cols-2 gap-3">
+                  {event.tickets.map((ticket) => (
+                    <li
+                      key={ticket.label}
+                      className="rounded-sm border border-border bg-white px-3 py-3"
+                    >
+                      <p className="font-serif text-2xl text-navy">{ticket.price}</p>
+                      <p className="mt-1 text-xs text-muted">{ticket.label}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             {event.volunteerRoles?.length ? (
               <div className="mt-6 rounded-sm border border-border bg-white p-4">
@@ -77,11 +96,11 @@ export function FeaturedEvent({ event }: { event: SabaEvent }) {
             <div className="mt-8 flex flex-wrap gap-3">
               {event.rsvpUrl ? (
                 <ButtonLink href={event.rsvpUrl} external>
-                  RSVP / Volunteer
+                  {event.volunteer ? "RSVP / Volunteer" : "Buy tickets"}
                 </ButtonLink>
-              ) : (
+              ) : event.status === "upcoming" ? (
                 <ButtonLink href="/contact">Ask about volunteering</ButtonLink>
-              )}
+              ) : null}
               <ButtonLink href={calendarHref} external variant="secondary">
                 Add to Calendar
               </ButtonLink>

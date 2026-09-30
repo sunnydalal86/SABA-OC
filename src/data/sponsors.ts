@@ -67,14 +67,21 @@ export const currentSponsors: Sponsor[] = [
     id: "keller-anderle-scolnick",
     name: "Keller Anderle Scolnick",
     logo: null,
-    website: null,
+    website: "https://www.kelleranderle.com",
+  },
+  {
+    id: "crowell-moring",
+    name: "Crowell & Moring LLP",
+    logo: null,
+    website: "https://www.crowell.com",
   },
 ];
 
-export const sponsorshipPacketUrl: string | null = null; // TODO: add PDF when available
+export const sponsorshipPacketUrl: string | null =
+  "https://www.sabaoc.org/s/SABA-2027-Sponsorship-Levels.pdf";
 
 export const sponsorshipInquiry = {
   name: siteConfig.contact.sponsorshipContactName,
   email: siteConfig.contact.sponsorshipEmail,
-  note: "Contact SABA-OC for current sponsorship levels and available opportunities.",
+  note: "Keller Anderle Scolnick is the title sponsor of the 2026 Diwali celebration, and Crowell & Moring LLP is the valet sponsor. SABA-OC is seeking sponsors for 2027.",
 };

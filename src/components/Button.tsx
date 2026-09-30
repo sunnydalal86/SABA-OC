@@ -18,7 +18,7 @@ const variants: Record<ButtonVariant, string> = {
     "bg-transparent text-navy border border-navy/25 hover:border-navy hover:bg-navy/[0.03]",
   ghost: "bg-transparent text-navy hover:bg-navy/[0.04]",
   light:
-    "bg-ivory text-navy hover:bg-white border border-transparent shadow-sm",
+    "bg-white text-navy hover:bg-ivory-deep border border-transparent shadow-sm",
 };
 
 const sizes: Record<ButtonSize, string> = {

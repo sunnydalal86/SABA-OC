@@ -16,7 +16,7 @@ export function LeadershipCard({ member }: { member: LeadershipMember }) {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-serif text-xl text-navy">{member.name}</h3>
-        <p className="mt-1 text-sm font-medium text-gold">{member.title}</p>
+        <p className="mt-1 text-sm font-medium text-gold-ink">{member.title}</p>
         {member.firm ? (
           <p className="mt-1 text-sm text-muted">{member.firm}</p>
         ) : null}
@@ -31,7 +31,7 @@ export function LeadershipCard({ member }: { member: LeadershipMember }) {
               href={member.externalProfile}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-gold"
+              className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-gold-ink"
               aria-label={`${member.name} professional profile`}
             >
               <ExternalLink className="size-4" aria-hidden />
@@ -41,7 +41,7 @@ export function LeadershipCard({ member }: { member: LeadershipMember }) {
           {member.email ? (
             <a
               href={`mailto:${member.email}`}
-              className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-gold"
+              className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-gold-ink"
             >
               <Mail className="size-4" aria-hidden />
               Email

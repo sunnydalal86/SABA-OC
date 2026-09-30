@@ -18,6 +18,9 @@ export type SabaEvent = {
   eventType: "networking" | "clinic" | "celebration" | "panel" | "other";
   image: string;
   imageAlt: string;
+  /** Shown instead of a start–end range when the site publishes a schedule, not a single end time. */
+  timeLabel?: string;
+  tickets?: { label: string; price: string }[];
   rsvpUrl: string | null;
   calendarUrl: string | null;
   volunteer: boolean;
@@ -37,11 +40,11 @@ export const events: SabaEvent[] = [
     summary:
       "A free community legal clinic offering assistance with the U.S. naturalization process and N-400 applications, including fee waiver support.",
     fullDescription:
-      "SABA-OC and the South Asian Bar Association Public Interest Foundation, in partnership with SAHARA (South Asian Helpline & Referral Agency), are hosting a free Naturalization Clinic in Artesia, CA. Lunch is provided for all volunteers. Session-specific slots are available for morning, midday, and afternoon. Attorneys can review N-400 applications and earn pro bono hours toward State Bar reporting requirements. Law students can shadow licensed attorneys. Legal professionals can support intake, fee waiver prep, and form review.",
+      "SABA-OC and the South Asian Bar Association Public Interest Foundation, in partnership with SAHARA (South Asian Helpline & Referral Agency), hosted a free Naturalization Clinic in Artesia, CA on August 22, 2026. Lunch was provided for volunteers. Attorneys reviewed N-400 applications, law students shadowed licensed attorneys, and legal professionals supported intake, fee waiver prep, and form review.",
     eventType: "clinic",
     image: "/images/events/naturalization-clinic.svg",
     imageAlt: "Abstract illustration representing a naturalization legal clinic",
-    rsvpUrl: null, // TODO: add RSVP / volunteer signup URL
+    rsvpUrl: null,
     calendarUrl: null,
     volunteer: true,
     volunteerRoles: [
@@ -49,8 +52,8 @@ export const events: SabaEvent[] = [
       "Law Students — Shadow licensed attorneys for hands-on immigration experience",
       "Legal Professionals — Support intake, fee waiver prep, and form review",
     ],
-    featured: true,
-    status: "upcoming",
+    featured: false,
+    status: "past",
   },
   {
     id: "diwali-2026",
@@ -58,18 +61,25 @@ export const events: SabaEvent[] = [
     date: "2026-11-05",
     startTime: "17:30",
     endTime: "21:00",
-    location: "Location TBD",
+    location: "Hotel Zessa, 201 E MacArthur Blvd, Santa Ana",
     summary:
-      "Celebrate the Festival of Lights with the Orange County legal community — food, music, dancing, and connection in support of SABA-OC’s mission.",
+      "Thursday, November 5, 2026 at Hotel Zessa in Santa Ana. Cocktail hour at 5:30 p.m., then dinner and dancing at 6:30 p.m.",
     fullDescription:
-      "Join SABA Orange County for our 1st Annual Diwali Celebration: Illuminate the Night. Come celebrate with an evening of South Asian food, music, dancing, henna artists, and joyful community. This gathering brings together the Orange County legal community to connect, celebrate, and support SABA-OC’s mission of building community, elevating voices, and fostering belonging within the profession. Sponsorship opportunities are available. Ticket tiers and final venue details will be announced as planning continues.",
+      "Join SABA Orange County for the 1st Annual Diwali Celebration: Illuminate the Night. The evening includes South Asian food, music, dancing, and henna artists. Keller Anderle Scolnick is the title sponsor, and Crowell & Moring LLP is the valet sponsor. A few sponsorship opportunities remain.",
     eventType: "celebration",
-    image: "/images/events/diwali.svg",
-    imageAlt: "Abstract illustration representing a Diwali celebration",
-    rsvpUrl: null,
+    image: "/images/events/diwali-rangoli.jpg",
+    imageAlt: "Lit diyas set in a ring of marigold petals",
+    tickets: [
+      { price: "$75", label: "Members" },
+      { price: "$100", label: "Non-members" },
+      { price: "$50", label: "Non-profit & judges" },
+      { price: "$25", label: "Law students" },
+    ],
+    timeLabel: "Cocktail hour 5:30 p.m.; dinner and dancing 6:30 p.m.",
+    rsvpUrl: "https://sabaorangecounty.wildapricot.org/event-6718574",
     calendarUrl: null,
     volunteer: false,
-    featured: false,
+    featured: true,
     status: "upcoming",
   },
   {
@@ -84,8 +94,8 @@ export const events: SabaEvent[] = [
     fullDescription:
       "Members and supporters gathered to mix and mingle with anyone interested in becoming involved with the South Asian Bar Association of Orange County and serving on its inaugural board of directors.",
     eventType: "networking",
-    image: "/images/events/networking.svg",
-    imageAlt: "Abstract illustration representing a networking gathering",
+    image: "/images/gallery/events/img-5736.jpg",
+    imageAlt: "Three members at a SABA-OC restaurant gathering",
     rsvpUrl: null,
     calendarUrl: null,
     volunteer: false,

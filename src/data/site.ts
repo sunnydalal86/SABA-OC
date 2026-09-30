@@ -20,9 +20,9 @@ export const siteConfig = {
   /** Set to null or { enabled: false } to hide the announcement bar */
   announcement: {
     enabled: true,
-    text: "Naturalization Clinic — Saturday, August 22, 2026 in Artesia. Volunteers welcome.",
+    text: "1st Annual Diwali Celebration — Thursday, November 5, 2026 at Hotel Zessa in Santa Ana.",
     href: "/events",
-    label: "View event",
+    label: "Get tickets",
   },
   contact: {
     /** Placeholder until official public contact email is confirmed */

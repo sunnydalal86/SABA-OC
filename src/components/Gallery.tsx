@@ -103,8 +103,7 @@ export function GalleryLightbox({
             priority
           />
         </div>
-        <p className="mt-3 text-center text-sm text-ivory/80">{current.alt}</p>
-        <p className="mt-1 text-center text-xs text-ivory/50">
+        <p className="mt-3 text-center text-xs text-ivory/50">
           {index! + 1} of {images.length}
         </p>
       </div>
@@ -128,7 +127,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               type="button"
               className="group relative block w-full overflow-hidden rounded-sm border border-border bg-navy text-left"
               onClick={() => setIndex(i)}
-              aria-label={`Open image: ${image.alt}`}
+              aria-label="View larger photograph"
             >
               <span className="relative block aspect-[4/3]">
                 <Image

@@ -30,7 +30,10 @@ export default function HomePage() {
   return (
     <>
       {featured ? <EventJsonLd event={featured} /> : null}
-      <Hero />
+      <Hero
+        imageSrc="/images/gallery/events/dsc-00171.jpg"
+        imageAlt="SABA-OC members gathered for an evening reception"
+      />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <FadeIn>

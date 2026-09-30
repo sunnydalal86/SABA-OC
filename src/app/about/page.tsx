@@ -63,7 +63,7 @@ export default function AboutPage() {
           </div>
           <aside className="lg:col-span-5">
             <div className="rounded-sm border border-border bg-white p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-ink">
                 Recognition
               </p>
               <p className="mt-3 font-serif text-2xl text-navy leading-snug">

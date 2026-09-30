@@ -20,7 +20,7 @@ export function EventCard({ event }: { event: SabaEvent }) {
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute left-4 top-4 flex flex-col items-center rounded-sm bg-ivory px-3 py-2 text-center shadow-sm">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gold">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gold-ink">
             {badge.month}
           </span>
           <span className="font-serif text-2xl leading-none text-navy">{badge.day}</span>
@@ -33,7 +33,7 @@ export function EventCard({ event }: { event: SabaEvent }) {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">
           {event.eventType}
         </p>
         <h3 className="mt-2 font-serif text-xl text-navy leading-snug">
@@ -45,7 +45,8 @@ export function EventCard({ event }: { event: SabaEvent }) {
           <p className="flex items-start gap-2">
             <CalendarDays className="mt-0.5 size-4 shrink-0 text-navy/50" aria-hidden />
             <span>
-              {formatEventDate(event.date)} · {formatTimeRange(event.startTime, event.endTime)}
+              {formatEventDate(event.date)}
+              {event.timeLabel ? ` · ${event.timeLabel}` : ` · ${formatTimeRange(event.startTime, event.endTime)}`}
             </span>
           </p>
           <p className="flex items-start gap-2">
@@ -54,16 +55,26 @@ export function EventCard({ event }: { event: SabaEvent }) {
           </p>
         </div>
         <p className="mt-4 flex-1 text-sm leading-relaxed text-charcoal/85">{event.summary}</p>
+        {event.tickets?.length ? (
+          <ul className="mt-4 grid grid-cols-2 gap-2">
+            {event.tickets.map((ticket) => (
+              <li key={ticket.label} className="rounded-sm border border-border px-2.5 py-2">
+                <p className="font-serif text-lg leading-none text-navy">{ticket.price}</p>
+                <p className="mt-1 text-[11px] text-muted">{ticket.label}</p>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         <div className="mt-5 flex flex-wrap gap-2">
-          {event.rsvpUrl ? (
+          {event.status === "upcoming" && event.rsvpUrl ? (
             <ButtonLink href={event.rsvpUrl} external size="sm">
-              RSVP
+              {event.volunteer ? "RSVP" : "Buy tickets"}
             </ButtonLink>
-          ) : (
+          ) : event.status === "upcoming" ? (
             <ButtonLink href="/contact" size="sm">
               Inquire to RSVP
             </ButtonLink>
-          )}
+          ) : null}
           <ButtonLink href={calendarHref} external variant="secondary" size="sm">
             Add to Calendar
           </ButtonLink>

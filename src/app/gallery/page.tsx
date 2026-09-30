@@ -20,15 +20,15 @@ export default function GalleryPage() {
     <>
       <InteriorHero
         title="Gallery"
-        description="A curated look at SABA-OC gatherings, service, and community — organized by album."
+        description="Photographs from SABA-OC receptions and member gatherings."
         breadcrumbs={[{ label: "Gallery" }]}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Albums"
-          title="Explore by program"
-          description="Select an album to view photographs. Replace placeholders with client-provided event photography when available."
+          title="From our gatherings"
+          description="Photographs published on the SABA-OC website."
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -70,9 +70,6 @@ export default function GalleryPage() {
           <div className="mt-14">
             <div className="mb-6 max-w-2xl">
               <h2 className="font-serif text-3xl text-navy">{album.name}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {album.description}
-              </p>
             </div>
             <GalleryGrid images={album.images} />
           </div>

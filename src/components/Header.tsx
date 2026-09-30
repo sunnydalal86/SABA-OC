@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, ExternalLink } from "lucide-react";
@@ -31,33 +32,35 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-200",
         scrolled
-          ? "border-border/80 bg-ivory/95 backdrop-blur-md"
-          : "border-transparent bg-ivory/80 backdrop-blur-sm",
+          ? "border-border bg-white/95 backdrop-blur-md"
+          : "border-transparent bg-white",
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="group min-w-0">
-          <span className="block font-serif text-xl tracking-tight text-navy sm:text-2xl">
-            {siteConfig.shortName}
-          </span>
-          <span className="mt-0.5 hidden text-[11px] font-sans uppercase tracking-[0.14em] text-muted sm:block">
-            South Asian Bar Association of Orange County
-          </span>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5 lg:px-4 xl:gap-4 xl:px-8">
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/images/brand/logo.png"
+            alt="SABA-OC, South Asian Bar Association of Orange County"
+            width={1009}
+            height={353}
+            priority
+            className="h-[4.5rem] w-auto sm:h-20 lg:h-[5.5rem] xl:h-28"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0.5 lg:flex xl:gap-1" aria-label="Primary">
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-sm px-2.5 py-2 text-sm text-charcoal/90 transition-colors hover:text-navy"
+              className="rounded-sm px-1.5 py-2 text-xs font-medium tracking-wide text-charcoal/90 transition-colors hover:text-navy xl:px-2.5 xl:text-[13px]"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <ButtonLink
             href={siteConfig.membershipUrl}
             external
@@ -84,7 +87,7 @@ export function Header() {
       <div
         id="mobile-menu"
         className={cn(
-          "border-t border-border bg-ivory lg:hidden",
+          "border-t border-border bg-white lg:hidden",
           open ? "block" : "hidden",
         )}
       >

@@ -108,7 +108,7 @@ export function ContactForm() {
             id="purpose"
             name="purpose"
             required
-            className="mt-2 w-full rounded-sm border border-border bg-ivory px-3 py-2.5 text-sm text-charcoal"
+            className="mt-2 w-full rounded-sm border border-border bg-white px-3 py-2.5 text-sm text-charcoal"
             defaultValue=""
           >
             <option value="" disabled>
@@ -130,7 +130,7 @@ export function ContactForm() {
             name="message"
             required
             rows={5}
-            className="mt-2 w-full rounded-sm border border-border bg-ivory px-3 py-2.5 text-sm text-charcoal"
+            className="mt-2 w-full rounded-sm border border-border bg-white px-3 py-2.5 text-sm text-charcoal"
           />
         </div>
         <div className="sm:col-span-2">
@@ -190,7 +190,7 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="mt-2 w-full rounded-sm border border-border bg-ivory px-3 py-2.5 text-sm text-charcoal"
+        className="mt-2 w-full rounded-sm border border-border bg-white px-3 py-2.5 text-sm text-charcoal"
       />
     </div>
   );

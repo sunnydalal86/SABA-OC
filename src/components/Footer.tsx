@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { footerNav } from "@/data/navigation";
@@ -16,8 +17,13 @@ export function Footer() {
     <footer className="mt-auto border-t border-border bg-navy text-ivory">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8">
         <div className="lg:col-span-5">
-          <p className="font-serif text-2xl tracking-tight">{siteConfig.shortName}</p>
-          <p className="mt-2 text-sm text-ivory/70">{siteConfig.name}</p>
+          <Image
+            src="/images/brand/logo-on-dark.png"
+            alt="SABA-OC, South Asian Bar Association of Orange County"
+            width={1009}
+            height={353}
+            className="h-14 w-auto"
+          />
           <p className="mt-5 max-w-md text-sm leading-relaxed text-ivory/75">
             {siteConfig.missionShort}
           </p>
@@ -96,18 +102,6 @@ export function Footer() {
             </p>
           )}
         </div>
-      </div>
-
-      <div className="border-t border-white/10 bg-gold px-4 py-3 text-center text-sm font-semibold text-navy-deep sm:px-6 lg:px-8">
-        Design Preview — Prepared by{" "}
-        <a
-          href="https://dizzledigital.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline decoration-2 underline-offset-4 hover:text-navy"
-        >
-          Dizzle Digital
-        </a>
       </div>
 
       <div className="border-t border-white/10">

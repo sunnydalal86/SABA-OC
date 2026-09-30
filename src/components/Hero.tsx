@@ -18,30 +18,20 @@ export function Hero({
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative isolate min-h-[min(85vh,920px)] overflow-hidden bg-navy-deep text-ivory">
-      <div className="absolute inset-0">
+    <section className="relative isolate overflow-hidden bg-navy-deep text-ivory">
+      <div className="relative h-[29vw] max-h-[440px] overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}
-          fill
+          width={1500}
+          height={1000}
           priority
-          unoptimized
-          className="object-cover object-center"
           sizes="100vw"
+          className="absolute left-0 top-[-16.3vw] h-auto w-full max-w-none"
         />
       </div>
 
-      {/* Readable left-to-right wash — keeps type clear without muddying the field */}
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/80 to-navy-deep/35"
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-navy-deep/50 via-transparent to-navy-deep/20"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto flex min-h-[min(85vh,920px)] max-w-6xl items-center px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <motion.div
           className="max-w-2xl"
           initial={reduce ? false : { opacity: 0, y: 18 }}

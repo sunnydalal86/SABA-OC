@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Source_Sans_3 } from "next/font/google";
-import { DesignPreviewBar } from "@/components/DesignPreviewBar";
+import { Montserrat, Playfair_Display } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,14 +7,14 @@ import { OrganizationJsonLd } from "@/components/JsonLd";
 import { createMetadata } from "@/lib/seo";
 import "./globals.css";
 
-const serif = Libre_Baskerville({
+const serif = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const sans = Source_Sans_3({
+const sans = Montserrat({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -33,7 +32,6 @@ export default function RootLayout({
     <html lang="en" className={`${serif.variable} ${sans.variable} h-full`}>
       <body className="min-h-full flex flex-col font-sans antialiased">
         <OrganizationJsonLd />
-        <DesignPreviewBar />
         <AnnouncementBar />
         <Header />
         <main className="flex-1">{children}</main>
