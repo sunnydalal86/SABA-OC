@@ -43,7 +43,7 @@ export default function LeadershipPage() {
           <SectionHeading
             eyebrow="Board of Directors"
             title="Board"
-            description="Board members will be listed here once official bios and confirmations are provided."
+            description="Inaugural directors of the South Asian Bar Association of Orange County."
           />
           {board.length === 0 ? (
             <EmptyState
@@ -60,7 +60,7 @@ export default function LeadershipPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <section id="steering" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Steering Committee"
           title="Steering Committee"

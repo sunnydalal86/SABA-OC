@@ -7,30 +7,49 @@ import {
   formatTimeRange,
 } from "@/lib/utils";
 import { ButtonLink } from "./Button";
+import { ExpandableFlyer } from "./FlyerLightbox";
 import { SectionHeading } from "./SectionHeading";
 
 export function FeaturedEvent({ event }: { event: SabaEvent }) {
   const calendarHref = event.calendarUrl ?? buildGoogleCalendarUrl(event);
 
+  const upcoming = event.status === "upcoming";
+  const flyer = event.imageFit === "contain";
+
   return (
-    <section className="border-y border-border bg-white">
+    <section id="event-detail" className="scroll-mt-28 border-y border-border bg-white lg:scroll-mt-36 xl:scroll-mt-44">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <SectionHeading
-          eyebrow="Featured Event"
-          title="Join us for our next gathering"
+          eyebrow={event.featured && upcoming ? "Featured Event" : "Event details"}
+          title={upcoming ? "Join us for our next gathering" : "From the calendar"}
           description={event.summary}
         />
 
-        <div className="mt-10 grid overflow-hidden rounded-sm border border-border lg:grid-cols-2">
-          <div className="relative min-h-[280px] bg-navy lg:min-h-full">
-            <Image
-              src={event.image}
-              alt={event.imageAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
+        <div
+          className={`mt-10 grid overflow-hidden rounded-sm border border-border ${flyer ? "lg:grid-cols-[minmax(0,28rem)_1fr]" : "lg:grid-cols-2"}`}
+        >
+          {flyer ? (
+            <div className="flex items-center justify-center bg-[#f6f3ec] px-4 py-6 sm:px-6 lg:py-8">
+              <ExpandableFlyer
+                src={event.image}
+                alt={event.imageAlt}
+                width={989}
+                height={1280}
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 448px"
+              />
+            </div>
+          ) : (
+            <div className="relative min-h-[280px] bg-navy lg:min-h-full">
+              <Image
+                src={event.image}
+                alt={event.imageAlt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          )}
 
           <div className="bg-ivory p-6 sm:p-8 lg:p-10" id={event.id}>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-ink">
@@ -96,7 +115,11 @@ export function FeaturedEvent({ event }: { event: SabaEvent }) {
             <div className="mt-8 flex flex-wrap gap-3">
               {event.rsvpUrl ? (
                 <ButtonLink href={event.rsvpUrl} external>
-                  {event.volunteer ? "RSVP / Volunteer" : "Buy tickets"}
+                  {event.volunteer
+                    ? "RSVP / Volunteer"
+                    : event.tickets?.length
+                      ? "Buy tickets"
+                      : "RSVP"}
                 </ButtonLink>
               ) : event.status === "upcoming" ? (
                 <ButtonLink href="/contact">Ask about volunteering</ButtonLink>

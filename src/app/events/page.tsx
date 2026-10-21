@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { InteriorHero } from "@/components/InteriorHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { EventCard } from "@/components/EventCard";
 import { FeaturedEvent } from "@/components/FeaturedEvent";
 import {
+  events,
   getFeaturedEvent,
   getPastEvents,
   getUpcomingEvents,
@@ -18,6 +19,7 @@ type Tab = "upcoming" | "volunteer" | "past";
 export default function EventsPage() {
   const [tab, setTab] = useState<Tab>("upcoming");
   const featured = getFeaturedEvent();
+  const [expandedId, setExpandedId] = useState<string | null>(featured?.id ?? null);
   const upcoming = getUpcomingEvents();
   const past = getPastEvents();
   const volunteer = getVolunteerEvents();
@@ -28,6 +30,68 @@ export default function EventsPage() {
     return upcoming;
   }, [tab, upcoming, past, volunteer]);
 
+  const expanded = events.find((event) => event.id === expandedId) ?? featured;
+
+  useEffect(() => {
+    function openFromHash(behavior: ScrollBehavior) {
+      const id = window.location.hash.replace("#", "");
+      if (!id || !events.some((event) => event.id === id)) return;
+      setExpandedId(id);
+      requestAnimationFrame(() => {
+        document.getElementById("event-detail")?.scrollIntoView({ behavior, block: "start" });
+      });
+    }
+
+    function onClick(event: MouseEvent) {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+      const anchor = (event.target as Element | null)?.closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("http")) return;
+      const url = new URL(href, window.location.origin);
+      if (url.pathname !== window.location.pathname) return;
+      const id = url.hash.replace("#", "");
+      if (!events.some((item) => item.id === id)) return;
+      event.preventDefault();
+      window.history.pushState(null, "", `${url.pathname}${url.search}#${id}`);
+      setExpandedId(id);
+      requestAnimationFrame(() => {
+        document.getElementById("event-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    function onHashChange() {
+      openFromHash("smooth");
+    }
+
+    openFromHash("auto");
+    window.addEventListener("hashchange", onHashChange);
+    document.addEventListener("click", onClick);
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
+
+  function selectEvent(id: string) {
+    setExpandedId(id);
+    const url = new URL(window.location.href);
+    url.hash = id;
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    requestAnimationFrame(() => {
+      document.getElementById("event-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   return (
     <>
       <InteriorHero
@@ -36,7 +100,7 @@ export default function EventsPage() {
         breadcrumbs={[{ label: "Events" }]}
       />
 
-      {featured ? <FeaturedEvent event={featured} /> : null}
+      {expanded ? <FeaturedEvent event={expanded} /> : null}
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
@@ -86,7 +150,13 @@ export default function EventsPage() {
         ) : (
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {list.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <EventCard
+                key={event.id}
+                event={event}
+                anchor={event.id !== expanded?.id}
+                selected={event.id === expanded?.id}
+                onSelect={selectEvent}
+              />
             ))}
           </div>
         )}

@@ -17,12 +17,23 @@ export const siteConfig = {
     "SABA-OC builds an inclusive legal community through networking, mentorship, advocacy, education, public service, and a shared commitment to equity, representation, and access to justice.",
   /** Wild Apricot membership portal — confirm before changing */
   membershipUrl: "https://SabaOrangeCounty.wildapricot.org",
-  /** Set to null or { enabled: false } to hide the announcement bar */
+  /** Set enabled to false to hide the announcement bar */
   announcement: {
     enabled: true,
-    text: "1st Annual Diwali Celebration — Thursday, November 5, 2026 at Hotel Zessa in Santa Ana.",
-    href: "/events",
-    label: "Get tickets",
+    items: [
+      {
+        title: "Beyond the Legal Answer: Becoming the Trusted Advisor Companies Need",
+        detail: "Tuesday, October 27, 2026 in Newport Beach",
+        href: "/events#trusted-advisor-2026",
+        label: "RSVP",
+      },
+      {
+        title: "1st Annual Diwali Celebration",
+        detail: "Thursday, November 5, 2026 at Hotel Zessa in Santa Ana",
+        href: "/events#diwali-2026",
+        label: "Get tickets",
+      },
+    ],
   },
   contact: {
     /** Placeholder until official public contact email is confirmed */
@@ -31,10 +42,10 @@ export const siteConfig = {
     sponsorshipContactName: "Akhil Sheth",
   },
   social: {
-    /** Replace placeholders when official profiles are confirmed */
-    linkedin: null as string | null,
-    instagram: null as string | null,
-    facebook: null as string | null,
+    linkedin:
+      "https://www.linkedin.com/company/south-asian-bar-association-of-orange-county-saba-oc/posts/",
+    instagram: "https://www.instagram.com/saba.orangecounty/",
+    facebook: "https://www.facebook.com/groups/1774454326590288",
     x: null as string | null,
   },
   sabanaNote:

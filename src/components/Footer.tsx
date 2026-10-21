@@ -4,14 +4,56 @@ import { ExternalLink } from "lucide-react";
 import { footerNav } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 
+function SocialLogo({ brand }: { brand: "linkedin" | "instagram" | "facebook" }) {
+  if (brand === "linkedin") {
+    return (
+      <svg viewBox="0 0 24 24" className="size-8" aria-hidden>
+        <rect width="24" height="24" rx="4" fill="#0A66C2" />
+        <path
+          fill="#fff"
+          d="M7.05 9.2H4.7V19h2.35V9.2zM5.87 4.55a1.38 1.38 0 1 0 0 2.76 1.38 1.38 0 0 0 0-2.76zM19.3 19h-2.34v-4.76c0-1.2-.43-2.02-1.5-2.02-.82 0-1.3.55-1.52 1.08-.08.19-.1.46-.1.73V19H11.5s.04-8.35 0-9.2h2.34v1.3c.31-.48 1.1-1.36 2.68-1.36 1.96 0 3.43 1.28 3.43 4.03V19z"
+        />
+      </svg>
+    );
+  }
+
+  if (brand === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" className="size-8" aria-hidden>
+        <defs>
+          <linearGradient id="saba-instagram" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#f9ce34" />
+            <stop offset="45%" stopColor="#ee2a7b" />
+            <stop offset="100%" stopColor="#6228d7" />
+          </linearGradient>
+        </defs>
+        <rect width="24" height="24" rx="6" fill="url(#saba-instagram)" />
+        <rect x="6.2" y="6.2" width="11.6" height="11.6" rx="3.4" fill="none" stroke="#fff" strokeWidth="1.6" />
+        <circle cx="12" cy="12" r="2.55" fill="none" stroke="#fff" strokeWidth="1.6" />
+        <circle cx="16.15" cy="7.85" r="0.9" fill="#fff" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="size-8" aria-hidden>
+      <rect width="24" height="24" rx="4" fill="#1877F2" />
+      <path
+        fill="#fff"
+        d="M15.9 12.6h-2.05V20h-2.7v-7.4H9.3V9.9h1.85V8.45c0-1.85 1.1-2.95 2.85-2.95.8 0 1.6.1 1.6.1v1.85h-.95c-.9 0-1.15.55-1.15 1.15V9.9h2.15l-.35 2.7z"
+      />
+    </svg>
+  );
+}
+
 export function Footer() {
   const year = new Date().getFullYear();
   const socials = [
-    { label: "LinkedIn", href: siteConfig.social.linkedin },
-    { label: "Instagram", href: siteConfig.social.instagram },
-    { label: "Facebook", href: siteConfig.social.facebook },
-    { label: "X", href: siteConfig.social.x },
-  ].filter((s) => s.href);
+    { label: "LinkedIn", href: siteConfig.social.linkedin, brand: "linkedin" as const },
+    { label: "Instagram", href: siteConfig.social.instagram, brand: "instagram" as const },
+    { label: "Facebook", href: siteConfig.social.facebook, brand: "facebook" as const },
+    { label: "X", href: siteConfig.social.x, brand: null },
+  ].filter((s) => s.href && s.brand);
 
   return (
     <footer className="mt-auto border-t border-border bg-navy text-ivory">
@@ -89,9 +131,10 @@ export function Footer() {
                     href={s.href!}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-ivory/70 hover:text-gold-soft"
+                    aria-label={s.label}
+                    className="inline-flex rounded-sm transition-opacity hover:opacity-80"
                   >
-                    {s.label}
+                    <SocialLogo brand={s.brand!} />
                   </a>
                 </li>
               ))}

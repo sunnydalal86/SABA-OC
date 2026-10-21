@@ -18,6 +18,8 @@ export type SabaEvent = {
   eventType: "networking" | "clinic" | "celebration" | "panel" | "other";
   image: string;
   imageAlt: string;
+  /** Portrait flyers should letterbox instead of cropping. */
+  imageFit?: "cover" | "contain";
   /** Shown instead of a start–end range when the site publishes a schedule, not a single end time. */
   timeLabel?: string;
   tickets?: { label: string; price: string }[];
@@ -54,6 +56,29 @@ export const events: SabaEvent[] = [
     ],
     featured: false,
     status: "past",
+  },
+  {
+    id: "trusted-advisor-2026",
+    title: "Beyond the Legal Answer: Becoming the Trusted Advisor Companies Need",
+    date: "2026-10-27",
+    startTime: "17:30",
+    endTime: "20:00",
+    location:
+      "Stradling Yocca Carlson & Rauth, 660 Newport Center Dr #1600, Newport Beach, CA 92660",
+    summary:
+      "A panel on how attorneys become strategic, commercially minded advisors. Nishma Doshi, Shaheen Sheik-Sadhal, and Rajal Patel, moderated by Harsha Pisupati.",
+    fullDescription:
+      "The most valuable lawyers don't just answer legal questions, they understand the business behind them. This panel explores how attorneys can move beyond subject-matter expertise to become strategic, commercially minded advisors who see around corners, connect issues across disciplines, and become indispensable to their clients. Panelists are Nishma Doshi, Senior Counsel at Experian; Shaheen Sheik-Sadhal, Founder at Esse Law; and Rajal Patel, Legal Counsel at Pathway Capital Management. Harsha Pisupati, Corporate & Finance Associate at Stradling Yocca Carlson & Rauth LLP, will moderate. The conversation will examine how lawyers develop broader business judgment, build deeper client relationships, and translate legal expertise into meaningful enterprise value. Presented by SABA-OC and the Orange County Bar Association, and sponsored by Stradling.",
+    eventType: "panel",
+    image: "/images/events/trusted-advisor-flyer.png",
+    imageAlt:
+      "Flyer for Beyond the Legal Answer, a SABA-OC panel on October 27, 2026 at Stradling in Newport Beach",
+    imageFit: "contain",
+    rsvpUrl: "https://sabaorangecounty.wildapricot.org/event-6824626",
+    calendarUrl: null,
+    volunteer: false,
+    featured: false,
+    status: "upcoming",
   },
   {
     id: "diwali-2026",

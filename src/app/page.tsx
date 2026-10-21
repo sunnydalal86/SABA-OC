@@ -82,15 +82,15 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Leadership"
               title="Meet our executive officers"
-              description="Volunteer leaders building SABA-OC as an independent Orange County chapter."
+              description="Volunteer leaders building SABA-OC as an independent Orange County chapter. See our full leadership, including the board of directors and steering committee."
             />
             <ButtonLink href="/leadership" variant="secondary" className="shrink-0">
-              Meet Our Leadership
+              See full leadership
             </ButtonLink>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {executives.map((member) => (
-              <LeadershipCard key={member.id} member={member} />
+              <LeadershipCard key={member.id} member={member} showBio={false} />
             ))}
           </div>
         </FadeIn>
