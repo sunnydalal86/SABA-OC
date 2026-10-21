@@ -2,7 +2,8 @@ import { siteConfig } from "@/data/site";
 
 export function AnnouncementBar() {
   const { announcement } = siteConfig;
-  if (!announcement.enabled || announcement.items.length === 0) return null;
+  const items: ReadonlyArray<(typeof announcement.items)[number]> = announcement.items;
+  if (!announcement.enabled || items.length === 0) return null;
 
   return (
     <div className="bg-navy-deep text-ivory">
@@ -10,7 +11,7 @@ export function AnnouncementBar() {
         <h2 className="pb-2 pt-3 text-xs font-semibold uppercase tracking-[0.16em] text-gold-soft">
           Upcoming Events
         </h2>
-        {announcement.items.map((item) => (
+        {items.map((item) => (
           <div
             key={item.href}
             className="flex flex-col items-start justify-between gap-1 border-t border-ivory/15 py-2.5 first:border-t-0 sm:flex-row sm:items-center sm:gap-6"
