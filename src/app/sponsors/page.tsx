@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Mail } from "lucide-react";
 import { InteriorHero } from "@/components/InteriorHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -90,19 +91,46 @@ export default function SponsorsPage() {
           title="Thank you to our partners"
           description="We gratefully recognize organizations supporting SABA-OC programming."
         />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {currentSponsors.map((sponsor) => (
-            <div
-              key={sponsor.id}
-              className="flex min-h-28 items-center justify-center rounded-sm border border-border bg-white px-6 py-8 text-center"
-            >
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {currentSponsors.map((sponsor) => {
+            const inner = sponsor.logo ? (
+              <Image
+                src={sponsor.logo}
+                alt={sponsor.name}
+                width={220}
+                height={100}
+                className="max-h-20 w-auto object-contain"
+              />
+            ) : (
               <p className="font-serif text-xl text-navy">{sponsor.name}</p>
-            </div>
-          ))}
+            );
+
+            const card = (
+              <div
+                key={sponsor.id}
+                className="flex h-40 items-center justify-center rounded-sm border border-border bg-white px-6 py-8 text-center"
+              >
+                {inner}
+              </div>
+            );
+
+            return sponsor.website ? (
+              <a
+                key={sponsor.id}
+                href={sponsor.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-shadow hover:shadow-md"
+              >
+                {card}
+              </a>
+            ) : (
+              card
+            );
+          })}
         </div>
         <p className="mt-4 text-xs text-muted">
-          Sponsor logos will replace text placeholders when official assets are
-          provided.
+          Interested in joining our sponsors? Reach out below.
         </p>
       </section>
 

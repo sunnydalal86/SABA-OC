@@ -43,7 +43,7 @@ export function FlyerLightbox({
       <button
         type="button"
         onClick={onClose}
-        className="absolute right-4 top-4 rounded-sm bg-ivory/10 p-2 text-ivory hover:bg-ivory/20"
+        className="absolute right-4 top-4 z-10 rounded-sm bg-ivory/10 p-2 text-ivory hover:bg-ivory/20"
         aria-label="Close brochure"
       >
         <X className="size-6" />

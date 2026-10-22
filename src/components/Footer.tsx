@@ -159,6 +159,18 @@ export function Footer() {
             <Link href="/accessibility" className="hover:text-ivory">
               Accessibility
             </Link>
+            <span className="text-ivory/35">·</span>
+            <span>
+              Website by{" "}
+              <a
+                href="https://dizzledigital.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ivory/65 transition-colors hover:text-ivory"
+              >
+                Dizzle Digital
+              </a>
+            </span>
           </div>
         </div>
       </div>

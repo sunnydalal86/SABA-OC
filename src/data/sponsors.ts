@@ -66,13 +66,13 @@ export const currentSponsors: Sponsor[] = [
   {
     id: "keller-anderle-scolnick",
     name: "Keller Anderle Scolnick",
-    logo: null,
+    logo: "/images/sponsors/keller-anderle-scolnick.jpg",
     website: "https://www.kelleranderle.com",
   },
   {
     id: "crowell-moring",
     name: "Crowell & Moring LLP",
-    logo: null,
+    logo: "/images/sponsors/crowell-moring.jpg",
     website: "https://www.crowell.com",
   },
 ];

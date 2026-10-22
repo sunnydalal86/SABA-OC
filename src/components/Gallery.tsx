@@ -136,6 +136,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
                   fill
                   loading="lazy"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  style={{ objectPosition: image.objectPosition ?? "center" }}
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </span>
