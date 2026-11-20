@@ -11,7 +11,7 @@ export function LeadershipCard({
 }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-sm border border-border bg-white">
-      <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-navy-muted sm:aspect-[4/5]">
+      <div className="relative aspect-[5/4] w-full shrink-0 overflow-hidden bg-navy-muted sm:aspect-square">
         {member.image ? (
           <Image
             src={member.image}
